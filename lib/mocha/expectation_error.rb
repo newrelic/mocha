@@ -2,7 +2,8 @@ require 'mocha/backtrace_filter'
 
 module Mocha
 
-  class ExpectationError < Exception
+  # We're doing this because activesupport 3.0 ActiveSupport::TestCase expects Mocha::ExpectationError to extend StandardError
+  class ExpectationError < StandardError
     
     def initialize(message = nil, backtrace = [])
       super(message)
